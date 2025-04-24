@@ -1,0 +1,8 @@
+name: PlayerSwap
+version: '1.0'
+main: org.macver.playerswap.PlayerSwap
+api-version: '1.21'
+prefix: PlayerSwap
+authors: [ Stonley890 ]
+description: A unique Minecraft co-op (or not) challenge.
+bootstrapper: org.macver.playerswap.PlayerSwapBootstrap
