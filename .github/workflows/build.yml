@@ -18,17 +18,19 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v3.14.1
         with:
-          # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
           java-version: '24'
-          # Java distribution. See the list of supported distributions in README file
           distribution: 'temurin'
+          cache: 'gradle'
       
       - name: Verify Java Version
         run: java -version
+        
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
-      - name: build
-        run: ./gradlew build
+        
+      - name: Build with Gradle
+        run: gradle build
+        
       - name: capture build artifacts
         uses: actions/upload-artifact@v4
         with:
