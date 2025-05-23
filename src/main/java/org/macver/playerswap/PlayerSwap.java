@@ -32,22 +32,18 @@ public final class PlayerSwap extends JavaPlugin {
 
     private static void newActivePlayer() {
 
-        Bukkit.getLogger().info("Rolling new player");
+        plugin.getLogger().info("Rolling new player");
 
         List<Player> players = ImmutableList.copyOf(Bukkit.getOnlinePlayers()); // This is the recommended method for getting an iterable snapshot of players
 
         Player formerActive = activePlayer;
 
-        if (activePlayer != null) {
-            try {
-                players.remove(activePlayer);
-            } catch (Exception ignored) {}
-        }
-
+        // Chose a random player to go next
         int i = new Random().nextInt(0, players.size());
         Player newActive = players.get(i);
 
         if (formerActive != null) {
+            // Copy data to next player
             newActive.setGliding(formerActive.isGliding());
             newActive.setVelocity(formerActive.getVelocity());
             newActive.setExperienceLevelAndProgress(formerActive.getTotalExperience());
@@ -73,8 +69,14 @@ public final class PlayerSwap extends JavaPlugin {
 
         activePlayer = newActive;
 
+        // Send message
+        String name = newActive.getName();
+        String customName = minecraftToName.get(activePlayer.getName());
+        if (customName != null) name = customName;
+        TextColor color = TextColor.color(minecraftToColor.get(activePlayer.getName()).asRGB());
+
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.sendMessage(Component.text(minecraftToName.get(activePlayer.getName())).color(TextColor.color(minecraftToColor.get(activePlayer.getName()).asRGB())).append(Component.text(" is now in control.").color(TextColor.color(0xffffff))));
+            player.sendMessage(Component.text(name).color(color).append(Component.text(" is now in control.").color(TextColor.color(0xffffff))));
         }
 
         Bukkit.getLogger().info("Done");
