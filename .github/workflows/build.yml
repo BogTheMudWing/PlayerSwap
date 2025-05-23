@@ -19,7 +19,9 @@ jobs:
         uses: actions/setup-java@v3.14.1
         with:
           # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
-          java-version: 24
+          java-version: '24'
+          # Java distribution. See the list of supported distributions in README file
+          distribution: 'temurin'
       
       - name: Verify Java Version
         run: java -version
