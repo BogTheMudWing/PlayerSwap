@@ -2,6 +2,9 @@
 
 Minecraft, but someone else takes control every 30 seconds
 
+ > [!NOTE]
+ > This repository is mirrored to [GitHub](https://github.com/BogTheMudWing/PlayerSwap) for visibility. Issues and pull requests should be made on [Macver Code Athenaeum](https://code.macver.org/Bog/PlayerSwap).
+
 ## About
 
 This is a PaperMC plugin I developed for a video I made on Waffle Irons Gaming:
